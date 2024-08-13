@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# 원본 소스 코드 출력
+echo "/*"
+cat $1
+echo "*/"
+
+# 실제 컴파일
+gcc $1 -o ${1%.c}.out
+
+# 컴파일 성공 메시지 출력
+if [ $? -eq 0 ]; then
+    echo "Compilation successful!"
+    echo "Executable generated: ${1%.c}.out"
+else
+    echo "Compilation failed."
+fi
